@@ -81,7 +81,7 @@ object frmPedidoGUI: TfrmPedidoGUI
       OnClick = btClienteClick
     end
     object edtClienteNome: TEdit
-      Left = 242
+      Left = 243
       Top = 66
       Width = 482
       Height = 23
@@ -136,14 +136,14 @@ object frmPedidoGUI: TfrmPedidoGUI
           Caption = 'Produto'
         end
         object Label5: TLabel
-          Left = 397
+          Left = 412
           Top = 15
           Width = 71
           Height = 15
           Caption = 'Valor Unitario'
         end
         object Label6: TLabel
-          Left = 562
+          Left = 576
           Top = 15
           Width = 62
           Height = 15
@@ -159,7 +159,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           OnKeyPress = edtClienteCodigoKeyPress
         end
         object btProduto: TButton
-          Left = 120
+          Left = 128
           Top = 11
           Width = 33
           Height = 25
@@ -168,7 +168,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           OnClick = btProdutoClick
         end
         object edtProdutoDescricao: TEdit
-          Left = 150
+          Left = 161
           Top = 12
           Width = 241
           Height = 23
@@ -177,7 +177,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           TabOrder = 2
         end
         object edtValorUnitario: TEdit
-          Left = 474
+          Left = 487
           Top = 12
           Width = 81
           Height = 23
@@ -185,7 +185,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           OnKeyPress = edtValorUnitarioKeyPress
         end
         object edtQuantidade: TEdit
-          Left = 630
+          Left = 644
           Top = 12
           Width = 48
           Height = 23
@@ -309,6 +309,7 @@ object frmPedidoGUI: TfrmPedidoGUI
     Aggregates = <>
     Params = <>
     AfterPost = CdsPedidoProdutoAfterPost
+    AfterDelete = CdsPedidoProdutoAfterDelete
     Left = 620
     Top = 243
     object CdsPedidoProdutoCODIGO: TIntegerField

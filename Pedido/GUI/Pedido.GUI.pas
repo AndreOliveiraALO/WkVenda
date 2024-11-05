@@ -8,7 +8,8 @@ uses
   Util.ConexaoBanco, ClienteConsulta.GUI, Cliente.Dominio, Cliente.Controlador,
   Produto.Controlador, Produto.Dominio, System.UITypes, ProdutoConsulta.GUI,
   Data.DB, Vcl.Grids, Vcl.DBGrids, Datasnap.DBClient, Pedido.Controlador,
-  Pedido.Dominio, PedidoConsulta.GUI, PedidoProduto.Dominio, Util.Enumerados;
+  Pedido.Dominio, PedidoConsulta.GUI, PedidoProduto.Dominio, Util.Enumerados,
+  midaslib;
 
 type
   TfrmPedidoGUI = class(TForm)
@@ -71,6 +72,7 @@ type
     procedure btCancelarPedidoClick(Sender: TObject);
     procedure DBGrid1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure CdsPedidoProdutoAfterDelete(DataSet: TDataSet);
   private
     { Private declarations }
     FCodigoPedidoProduto: Integer;
@@ -324,6 +326,11 @@ begin
     FreeAndNil(lProdutoControlador);
     FreeAndNil(lProduto);
   end;
+end;
+
+procedure TfrmPedidoGUI.CdsPedidoProdutoAfterDelete(DataSet: TDataSet);
+begin
+  CalculaValorTotalPedido;
 end;
 
 procedure TfrmPedidoGUI.CdsPedidoProdutoAfterPost(DataSet: TDataSet);
