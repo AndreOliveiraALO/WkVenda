@@ -25,7 +25,8 @@ type
     function VerificaCampos(): boolean;
   public
     { Public declarations }
-    constructor Create(Sender: TComponent; pPedido: TPedidoDominio; pOperacao: TOperacaoTelaPedido); overload;
+    constructor Create(Sender: TComponent; pPedido: TPedidoDominio;
+      pOperacao: TOperacaoTelaPedido); overload;
   end;
 
 var

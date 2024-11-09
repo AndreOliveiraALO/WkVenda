@@ -1,23 +1,25 @@
 inherited frmClienteConsultaGUI: TfrmClienteConsultaGUI
   Caption = 'Consulta clientes'
-  ClientWidth = 533
-  Constraints.MinHeight = 0
-  Constraints.MinWidth = 0
-  ExplicitWidth = 545
+  ClientHeight = 350
+  ClientWidth = 530
   TextHeight = 15
   inherited Panel1: TPanel
-    Width = 533
+    Width = 530
     ExplicitWidth = 529
     inherited edtNome: TEdit
       Left = 72
+      Anchors = [akLeft, akTop, akRight]
       ExplicitLeft = 72
+    end
+    inherited btPesquisar: TButton
+      Anchors = [akTop, akRight]
     end
   end
   inherited Panel2: TPanel
-    Width = 533
+    Width = 530
+    Height = 209
     ExplicitWidth = 529
     inherited DBGrid1: TDBGrid
-      Width = 531
       Columns = <
         item
           Expanded = False
@@ -45,7 +47,8 @@ inherited frmClienteConsultaGUI: TfrmClienteConsultaGUI
     end
   end
   inherited Panel3: TPanel
-    Width = 533
+    Top = 274
+    Width = 530
     ExplicitWidth = 529
     inherited btSelcionar: TButton
       OnClick = btSelcionarClick

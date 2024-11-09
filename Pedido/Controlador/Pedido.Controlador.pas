@@ -14,7 +14,8 @@ type
   public
     procedure Salvar(pPedido: TPedidoDominio);
     procedure Excluir(pNumeroPedido: integer);
-    procedure ObterPedido(pNumeroPedido: integer; var pPedido: TPedidoDominio);
+    procedure ObterPedido(pNumeroPedido: integer; var pPedido: TPedidoDominio;
+      pCompleto: boolean = true);
   end;
 
 implementation
@@ -51,7 +52,7 @@ begin
 end;
 
 procedure TPedidoControlador.ObterPedido(pNumeroPedido: integer;
-  var pPedido: TPedidoDominio);
+  var pPedido: TPedidoDominio; pCompleto: boolean = true);
 var
   lPedidoRepositorio : TPedidoRepositorio;
   lClienteControlador: TClienteControlador;
@@ -64,10 +65,13 @@ begin
   lPedidoProdutoControlador := TPedidoProdutoControlador.Create;
   try
     lPedidoRepositorio.ObterPedido(pNumeroPedido, TConexaoBanco.ObterInstancia, pPedido);
-    lCliente := pPedido.Cliente;
-    lClienteControlador.ObterCliente(pPedido.Cliente.Codigo, lCliente);
-    lListaPedidoProduto := pPedido.ListaPedidoProduto;
-    lPedidoProdutoControlador.ObterListaPedidoProduto(pNumeroPedido, lListaPedidoProduto);
+    if pCompleto then
+    begin
+      lCliente := pPedido.Cliente;
+      lClienteControlador.ObterCliente(pPedido.Cliente.Codigo, lCliente);
+      lListaPedidoProduto := pPedido.ListaPedidoProduto;
+      lPedidoProdutoControlador.ObterListaPedidoProduto(pNumeroPedido, lListaPedidoProduto);
+    end;
   finally
     FreeAndNil(lPedidoRepositorio);
     FreeAndNil(lClienteControlador);

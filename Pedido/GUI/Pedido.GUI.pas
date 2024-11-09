@@ -137,10 +137,16 @@ begin
     if lFrmPedidoConsultaGUI.ShowModal = mrOk then
     begin
       try
-        LimpaCampos;
-        lPedidoControlador.Excluir(lPedido.NumeroPedido);
-        MessageDlg('Pedido de numero '+lPedido.NumeroPedido.ToString+
-          ' cancelado com sucesso !', TMsgDlgType.mtInformation, [mbOK], 0);
+        lPedidoControlador.ObterPedido(lPedido.NumeroPedido, lPedido, False);
+        if lPedido.NumeroPedido = 0 then
+          MessageDlg('Numero do pedido não encontrado!', TMsgDlgType.mtWarning, [mbOK], 0)
+        else
+        begin
+          LimpaCampos;
+          lPedidoControlador.Excluir(lPedido.NumeroPedido);
+          MessageDlg('Pedido de numero '+lPedido.NumeroPedido.ToString+
+            ' cancelado com sucesso !', TMsgDlgType.mtInformation, [mbOK], 0);
+        end;
       except
         on E: Exception do
         begin

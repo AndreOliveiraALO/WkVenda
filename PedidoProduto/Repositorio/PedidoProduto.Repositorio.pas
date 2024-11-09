@@ -3,7 +3,8 @@ unit PedidoProduto.Repositorio;
 interface
 
 uses
-  PedidoProduto.Dominio, Util.ConexaoBanco, Data.DB, System.SysUtils;
+  PedidoProduto.Dominio, Util.ConexaoBanco, Data.DB, System.SysUtils,
+  FireDAC.Stan.Param, System.Classes;
 
 type
   TPedidoProdutoRepositorio = class
@@ -50,17 +51,21 @@ procedure TPedidoProdutoRepositorio.ObterListaPedidoProduto(
 var
   lSql: String;
   lDataSet: TDataSet;
+  lParam: TFDParams;
 begin
   lDataSet := TDataSet.Create(nil);
+  lParam:= TFDParams.Create();
   try
+    lParam.Add('NUMERO_PEDIDO', pNumeroPedido, ptInput);
     lSql := 'SELECT PP.CODIGO, PP.CODIGO_PRODUTO, P.DESCRICAO AS DESCRICAO_PRODUTO, '+
       'PP.QUANTIDADE, PP.VALOR_UNITARIO, PP.VALOR_TOTAL '+
       'FROM PEDIDO_PRODUTO PP INNER JOIN PRODUTO P ON PP.CODIGO_PRODUTO = P.CODIGO '+
-      'WHERE PP.NUMERO_PEDIDO = '+pNumeroPedido.ToString;
-    pConexaoBanco.Conexao.ExecSQL(lSql, lDataSet);
+      'WHERE PP.NUMERO_PEDIDO = :NUMERO_PEDIDO';
+    pConexaoBanco.Conexao.ExecSQL(lSql, lParam, lDataSet);
     lDataSet.First;
     pListaPedidoProduto.PopularListaPedidoProduto(lDataSet);
   finally
+    FreeAndNil(lParam);
     FreeAndNil(lDataSet);
   end;
 end;

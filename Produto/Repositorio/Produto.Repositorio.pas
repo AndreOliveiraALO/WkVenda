@@ -4,7 +4,7 @@ interface
 
 uses
   Util.ConexaoBanco, Produto.Dominio, Data.DB, FireDAC.Comp.Client,
-  System.SysUtils;
+  System.SysUtils, FireDAC.Stan.Param;
 
 type
   TProdutoRepositorio = class
@@ -23,10 +23,17 @@ procedure TProdutoRepositorio.Consultar(pDescricao: String;
   pConexaoBanco: TConexaoBanco; var pDataSet: TDataSet);
 var
   lSql: string;
+  lParam: TFDParams;
 begin
-  lSql:= 'SELECT CODIGO, DESCRICAO, PRECOVENDA FROM PRODUTO '+
-    'WHERE UPPER(DESCRICAO) LIKE '+ QuotedStr('%'+pDescricao.ToUpper+'%');
-  pConexaoBanco.Conexao.ExecSQL(lSql, pDataSet);
+  lParam := TFDParams.Create;
+  try
+    lParam.Add('DESCRICAO','%'+pDescricao.ToUpper+'%', ptInput);
+    lSql:= 'SELECT CODIGO, DESCRICAO, PRECOVENDA FROM PRODUTO '+
+      'WHERE UPPER(DESCRICAO) LIKE :DESCRICAO';
+    pConexaoBanco.Conexao.ExecSQL(lSql, lParam, pDataSet);
+  finally
+    FreeAndNil(lParam);
+  end;
 end;
 
 procedure TProdutoRepositorio.ObterProduto(pCodigo: integer;

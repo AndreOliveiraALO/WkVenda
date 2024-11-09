@@ -3,7 +3,8 @@ unit Pedido.Repositorio;
 interface
 
 uses
-  Pedido.Dominio, Util.ConexaoBanco, Data.DB, System.Classes, System.SysUtils;
+  Pedido.Dominio, Util.ConexaoBanco, Data.DB, System.Classes, System.SysUtils,
+  FireDAC.Stan.Param;
 
 type
   TPedidoRepositorio = class
@@ -79,12 +80,19 @@ procedure TPedidoRepositorio.ObterPedido(pNumeroPedido: integer;
 var
   lSql: string;
   lDataSet: TDataSet;
+  lParam: TFDParams;
 begin
-  lSql:= 'SELECT NUMERO_PEDIDO, DATA_EMISSAO, CODIGO_CLIENTE, VALOR_TOTAL '+
-    'FROM PEDIDO WHERE NUMERO_PEDIDO = '+pNumeroPedido.ToString;
-  pConexaoBanco.Conexao.ExecSQL(lSql, lDataSet);
-  lDataSet.First;
-  pPedido.PopularObjeto(lDataSet);
+  lParam := TFDParams.Create();
+  try
+    lParam.Add('NUMERO_PEDIDO', pNumeroPedido, ptInput);
+    lSql := 'SELECT NUMERO_PEDIDO, DATA_EMISSAO, CODIGO_CLIENTE, VALOR_TOTAL '+
+      'FROM PEDIDO WHERE NUMERO_PEDIDO = :NUMERO_PEDIDO';
+    pConexaoBanco.Conexao.ExecSQL(lSql, lParam, lDataSet);
+    lDataSet.First;
+    pPedido.PopularObjeto(lDataSet);
+  finally
+    FreeAndNil(lParam);
+  end;
 end;
 
 end.

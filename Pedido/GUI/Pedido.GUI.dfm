@@ -5,6 +5,8 @@ object frmPedidoGUI: TfrmPedidoGUI
   ClientHeight = 538
   ClientWidth = 803
   Color = clBtnFace
+  Constraints.MinHeight = 576
+  Constraints.MinWidth = 815
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -21,6 +23,9 @@ object frmPedidoGUI: TfrmPedidoGUI
     Align = alTop
     TabOrder = 0
     ExplicitWidth = 799
+    DesignSize = (
+      803
+      97)
     object Label1: TLabel
       Left = 19
       Top = 9
@@ -83,8 +88,9 @@ object frmPedidoGUI: TfrmPedidoGUI
     object edtClienteNome: TEdit
       Left = 243
       Top = 66
-      Width = 482
+      Width = 545
       Height = 23
+      Anchors = [akLeft, akTop, akRight]
       Color = clBtnFace
       Enabled = False
       TabOrder = 5
@@ -128,6 +134,9 @@ object frmPedidoGUI: TfrmPedidoGUI
         Align = alTop
         TabOrder = 0
         ExplicitWidth = 791
+        DesignSize = (
+          795
+          52)
         object Label4: TLabel
           Left = 10
           Top = 15
@@ -140,6 +149,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           Top = 15
           Width = 71
           Height = 15
+          Anchors = [akTop, akRight]
           Caption = 'Valor Unitario'
         end
         object Label6: TLabel
@@ -147,6 +157,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           Top = 15
           Width = 62
           Height = 15
+          Anchors = [akTop, akRight]
           Caption = 'Quantidade'
         end
         object edtProdutoCodigo: TEdit
@@ -172,6 +183,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           Top = 12
           Width = 241
           Height = 23
+          Anchors = [akLeft, akTop, akRight]
           Color = clBtnFace
           Enabled = False
           TabOrder = 2
@@ -181,6 +193,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           Top = 12
           Width = 81
           Height = 23
+          Anchors = [akTop, akRight]
           TabOrder = 3
           OnKeyPress = edtValorUnitarioKeyPress
         end
@@ -189,6 +202,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           Top = 12
           Width = 48
           Height = 23
+          Anchors = [akTop, akRight]
           TabOrder = 4
           OnKeyPress = edtClienteCodigoKeyPress
         end
@@ -197,6 +211,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           Top = 11
           Width = 75
           Height = 25
+          Anchors = [akTop, akRight]
           Caption = 'Adicionar'
           DoubleBuffered = True
           ParentDoubleBuffered = False
@@ -259,17 +274,21 @@ object frmPedidoGUI: TfrmPedidoGUI
         TabOrder = 3
         ExplicitLeft = 693
         ExplicitHeight = 284
-      end
-      object btRemover: TButton
-        Left = 709
-        Top = 58
-        Width = 75
-        Height = 25
-        Caption = 'Remover'
-        DoubleBuffered = True
-        ParentDoubleBuffered = False
-        TabOrder = 4
-        OnClick = btRemoverClick
+        DesignSize = (
+          98
+          285)
+        object btRemover: TButton
+          Left = 15
+          Top = 6
+          Width = 75
+          Height = 25
+          Anchors = [akTop, akRight]
+          Caption = 'Remover'
+          DoubleBuffered = True
+          ParentDoubleBuffered = False
+          TabOrder = 0
+          OnClick = btRemoverClick
+        end
       end
       object Panel5: TPanel
         Left = 0
@@ -277,14 +296,18 @@ object frmPedidoGUI: TfrmPedidoGUI
         Width = 795
         Height = 33
         Align = alBottom
-        TabOrder = 5
+        TabOrder = 4
         ExplicitTop = 336
         ExplicitWidth = 791
+        DesignSize = (
+          795
+          33)
         object Label7: TLabel
           Left = 568
           Top = 11
           Width = 115
           Height = 15
+          Anchors = [akTop, akRight]
           Caption = 'Valor Total do Pedido:'
         end
         object edtValorTotalPedido: TEdit
@@ -292,6 +315,7 @@ object frmPedidoGUI: TfrmPedidoGUI
           Top = 5
           Width = 96
           Height = 23
+          Anchors = [akTop, akRight]
           Color = clBtnFace
           Enabled = False
           TabOrder = 0

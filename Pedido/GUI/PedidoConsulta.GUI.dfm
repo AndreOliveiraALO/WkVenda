@@ -3,8 +3,10 @@ object frmPedidoConsultaGUI: TfrmPedidoConsultaGUI
   Top = 0
   Caption = 'Consulta pedido'
   ClientHeight = 113
-  ClientWidth = 278
+  ClientWidth = 316
   Color = clBtnFace
+  Constraints.MinHeight = 151
+  Constraints.MinWidth = 328
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -16,7 +18,7 @@ object frmPedidoConsultaGUI: TfrmPedidoConsultaGUI
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 278
+    Width = 316
     Height = 113
     Align = alClient
     TabOrder = 0
@@ -30,7 +32,7 @@ object frmPedidoConsultaGUI: TfrmPedidoConsultaGUI
       Caption = 'Numero do Pedido'
     end
     object edtNumeroPedido: TEdit
-      Left = 123
+      Left = 133
       Top = 21
       Width = 134
       Height = 23
@@ -38,7 +40,7 @@ object frmPedidoConsultaGUI: TfrmPedidoConsultaGUI
       OnKeyPress = edtNumeroPedidoKeyPress
     end
     object btConfirmar: TButton
-      Left = 42
+      Left = 64
       Top = 71
       Width = 75
       Height = 25
@@ -47,7 +49,7 @@ object frmPedidoConsultaGUI: TfrmPedidoConsultaGUI
       OnClick = btConfirmarClick
     end
     object btCancelar: TButton
-      Left = 146
+      Left = 168
       Top = 71
       Width = 75
       Height = 25

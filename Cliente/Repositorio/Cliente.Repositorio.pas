@@ -23,10 +23,17 @@ procedure TClienteRepositorio.Consultar(pNome: String;
   pConexaoBanco: TConexaoBanco; var pDataSet: TDataSet);
 var
   lSql: string;
+  lParam : TFDParams;
 begin
-  lSql:= 'SELECT CODIGO, NOME, CIDADE, UF FROM CLIENTE '+
-    'WHERE UPPER(NOME) LIKE '+ QuotedStr('%'+pNome.ToUpper+'%');
-  pConexaoBanco.Conexao.ExecSQL(lSql, pDataSet);
+  lParam := TFDParams.Create;
+  try
+    lParam.Add('NOME', '%'+pNome.ToUpper()+'%', ptInput);
+    lSql:= 'SELECT CODIGO, NOME, CIDADE, UF FROM CLIENTE '+
+      'WHERE UPPER(NOME) LIKE :NOME';
+    pConexaoBanco.Conexao.ExecSQL(lSql, lParam, pDataSet);
+  finally
+    FreeAndNil(lParam);
+  end;
 end;
 
 procedure TClienteRepositorio.ObterCliente(pCodigo: integer;
