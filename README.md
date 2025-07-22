@@ -129,8 +129,8 @@ WkVenda
 ## 📥 Instruções para Importação do Banco de Dados
 
 1. Crie um novo banco no seu SGBD, ex: `WkVenda`
-2. Execute o arquivo `wk_venda_dump.sql`
-3. Verifique se as tabelas foram criadas corretamente
+2. Execute o arquivo `Dump20241104.sql`, na pasta Dump_banco.
+3. Verifique se as tabelas e dados foram criados corretamente.
 4. Banco pronto para uso
 
 ---
@@ -149,12 +149,12 @@ Password=suasenha
 Port=3306
 ```
 
-> O arquivo `.ini` deve estar na mesma pasta do executável. A classe `TConexaoBanco` se encarrega de fazer a leitura automática do arquivo .ini.
+> O arquivo `.ini` deve estar na mesma pasta do executável. A classe `TConexaoBanco` se encarrega de fazer a leitura automática do mesmo.
 ---
 
 ## ✨ Considerações Finais
 
-Este projeto representa um exemplo sólido de aplicação prática de princípios modernos de desenvolvimento em Delphi, utilizando arquitetura organizada e técnicas que facilitam testes, manutenção e escalabilidade. É ideal para desenvolvedores que buscam entender como aplicar MVC, SOLID e padrões de projeto em Delphi VCL.
+Este projeto representa um exemplo sólido de aplicação prática de princípios modernos de desenvolvimento em Delphi, utilizando arquitetura organizada e técnicas que facilitam testes, manutenção e escalabilidade. É ideal para desenvolvedores que buscam entender como aplicar MVC, SOLID e padrões de projeto em Delphi VCL. E é possível converter este projeto para FireMonkey FMX(suporte a Windows, macOS, iOS e Android), adicionar suporte a múltiplos bancos via FireDAC, ou integrar uma API RESTful para comunicação externa.
 
 ---
 
